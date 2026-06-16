@@ -1,0 +1,293 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── GLOBAL RESET ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Public Sans', 'Segoe UI', sans-serif;
+  background: #f9f9ff;
+  color: #091c35;
+  overflow-x: hidden;
+}
+
+/* ── SIDEBAR RESPONSIVE ── */
+.sidebar {
+  width: 256px;
+  height: 100vh;
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 40;
+  background: #f0f3ff;
+  border-right: 1px solid #c3c6d6;
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+  gap: 8px;
+  transition: transform 0.3s ease;
+}
+
+.main-content {
+  margin-left: 256px;
+  min-height: 100vh;
+}
+
+/* ── MOBILE: hide sidebar, show bottom nav ── */
+@media (max-width: 768px) {
+  .sidebar {
+    transform: translateX(-100%);
+  }
+
+  .sidebar.open {
+    transform: translateX(0);
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  /* Bento grid → single column on mobile */
+  .bento-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* Header padding */
+  .page-header {
+    padding: 8px 16px !important;
+  }
+
+  /* Page content padding */
+  .page-content {
+    padding: 16px !important;
+  }
+
+  /* Doctor cards → vertical layout */
+  .doctor-card {
+    flex-direction: column !important;
+  }
+
+  .doctor-card-img {
+    width: 100% !important;
+    height: 160px !important;
+  }
+
+  /* Hide desktop search bar */
+  .desktop-search {
+    display: none !important;
+  }
+
+  /* Table scroll */
+  .table-container {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Grid columns → single on mobile */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+
+  /* Hero section */
+  .hero-section {
+    padding: 24px 16px !important;
+  }
+
+  .hero-title {
+    font-size: 22px !important;
+  }
+
+  .hero-search {
+    flex-direction: column !important;
+  }
+
+  /* Specialties grid → 3 cols on mobile */
+  .specialty-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 8px !important;
+  }
+
+  /* Booking page → single column */
+  .booking-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Doctor profile → single column */
+  .profile-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hide sticky right sidebar on mobile */
+  .sticky-sidebar {
+    position: static !important;
+  }
+
+  /* Font size adjustments */
+  h1 { font-size: 24px !important; }
+  h2 { font-size: 20px !important; }
+  h3 { font-size: 18px !important; }
+
+  /* Slot grid → 3 cols on mobile */
+  .slot-grid {
+    grid-template-columns: repeat(3, 1fr) !important;
+  }
+
+  /* Bottom padding for mobile nav */
+  .page-wrapper {
+    padding-bottom: 80px !important;
+  }
+}
+
+/* ── TABLET ── */
+@media (max-width: 1024px) and (min-width: 769px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .main-content {
+    margin-left: 200px;
+  }
+
+  .bento-grid {
+    grid-template-columns: repeat(6, 1fr) !important;
+  }
+
+  .booking-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* ── HAMBURGER MENU BUTTON ── */
+.hamburger-btn {
+  display: none;
+  padding: 8px;
+  border-radius: 8px;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  color: #003d9b;
+}
+
+@media (max-width: 768px) {
+  .hamburger-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ── SIDEBAR OVERLAY ── */
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 39;
+}
+
+.sidebar-overlay.open {
+  display: block;
+}
+
+/* ── CARD HOVER EFFECTS ── */
+.doctor-card:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+/* ── SMOOTH SCROLLING ── */
+html {
+  scroll-behavior: smooth;
+}
+
+/* ── SCROLLBAR STYLING ── */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #c3c6d6;
+  border-radius: 10px;
+}
+
+/* ── BOTTOM NAV ACTIVE ── */
+.bottom-nav-item.active {
+  background: #dae2ff;
+  color: #001848;
+  transform: translateY(-4px);
+  border-radius: 9999px;
+}
+
+/* ── INPUT FOCUS ── */
+input:focus,
+select:focus,
+textarea:focus {
+  outline: none;
+  border-color: #003d9b !important;
+  box-shadow: 0 0 0 3px rgba(0, 61, 155, 0.1);
+}
+
+/* ── BUTTON TRANSITIONS ── */
+button {
+  transition: all 0.2s ease;
+}
+
+button:active {
+  transform: scale(0.97);
+}
+
+/* ── MODAL ANIMATION ── */
+@keyframes modalIn {
+  from { opacity: 0; transform: scale(0.95) translateY(10px); }
+  to   { opacity: 1; transform: scale(1) translateY(0); }
+}
+
+.modal-box {
+  animation: modalIn 0.25s ease;
+}
+
+/* ── FADE IN ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.fade-in {
+  animation: fadeIn 0.3s ease;
+}
+
+/* ── PULSE ── */
+@keyframes pulse-ring {
+  0%   { transform: scale(.95); box-shadow: 0 0 0 0 rgba(0,61,155,.4); }
+  70%  { transform: scale(1);   box-shadow: 0 0 0 8px rgba(0,61,155,0); }
+  100% { transform: scale(.95); box-shadow: 0 0 0 0 rgba(0,61,155,0); }
+}
+
+.pulse-ring {
+  animation: pulse-ring 2s infinite;
+}
+
+/* ── NO SCROLLBAR ── */
+.hide-scrollbar::-webkit-scrollbar { display: none; }
+.hide-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+
+/* ── MATERIAL ICONS ── */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+  font-family: 'Material Symbols Outlined';
+  font-size: 24px;
+  line-height: 1;
+  display: inline-block;
+  vertical-align: middle;
+}
