@@ -203,7 +203,7 @@ const LandingPage = () => {
                 <input value={searchSpecialty} onChange={e => setSearchSpecialty(e.target.value)}
                   onKeyDown={e => e.key==='Enter' && handleSearch()}
                   placeholder="Specialist (e.g. Cardiologist)"
-                  style={{ width:'100%', border:'none', outline:'none', fontSize:15, padding:'12px 0', background:'transparent' }} />
+                  style={{ width:'100%', border:'none', outline:'none', fontSize:15, padding:'12px 0',color: '#091c35', background:'transparent' }} />
               </div>
               <div style={{ flex:1, display:'flex', alignItems:'center', padding:'0 12px' }}>
                 <span className="material-symbols-outlined" style={{ color:'#003d9b', marginRight:8, fontSize:20 }}>location_on</span>
