@@ -210,7 +210,7 @@ const LandingPage = () => {
                 <input value={searchCity} onChange={e => setSearchCity(e.target.value)}
                   onKeyDown={e => e.key==='Enter' && handleSearch()}
                   placeholder="City"
-                  style={{ width:'100%', border:'none', outline:'none', fontSize:15, padding:'12px 0', background:'transparent' }} />
+                  style={{ width:'100%', border:'none', outline:'none', fontSize:15, padding:'12px 0',color: '#091c35', background:'transparent' }} />
               </div>
               <button onClick={handleSearch}
                 style={{ background:'#003d9b', color:'white', border:'none', padding:'14px 28px', borderRadius:8, fontWeight:700, fontSize:14, cursor:'pointer', whiteSpace:'nowrap' }}>
