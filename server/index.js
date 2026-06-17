@@ -10,7 +10,7 @@ const app = express();
 app.use(cors({
   origin: [
     'http://localhost:3000',
-    
+    "https://medi-local.vercel.app",
     'https://medi-local-git-main-tans-projects-71f77ff6.vercel.app/'
 
   ],
