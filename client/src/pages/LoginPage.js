@@ -8,6 +8,7 @@ const LoginPage = () => {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const { login } = useAuth();
+  const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleChange = (e) => {
@@ -99,27 +100,45 @@ const LoginPage = () => {
             />
           </div>
 
-          <div style={{ marginBottom: '1.5rem' }}>
-            <label style={{ display: 'block', marginBottom: '0.5rem', color: '#374151', fontWeight: '500' }}>
-              Password
-            </label>
-            <input
-              type="password"
-              name="password"
-              value={form.password}
-              onChange={handleChange}
-              placeholder="••••••••"
-              required
-              style={{
-                width: '100%',
-                padding: '0.75rem',
-                border: '1px solid #d1d5db',
-                borderRadius: '8px',
-                fontSize: '1rem',
-                boxSizing: 'border-box'
-              }}
-            />
-          </div>
+          <div style={{ marginBottom: '1.5rem', position: 'relative' }}>
+  <label style={{ display: 'block', marginBottom: '0.5rem', color: '#374151', fontWeight: '500' }}>
+    Password
+  </label>
+  <input
+    type={showPassword ? 'text' : 'password'}
+    name="password"
+    value={form.password}
+    onChange={handleChange}
+    placeholder="••••••••"
+    required
+    style={{
+      width: '100%',
+      padding: '0.75rem',
+      paddingRight: '3rem',
+      border: '1px solid #d1d5db',
+      borderRadius: '8px',
+      fontSize: '1rem',
+      boxSizing: 'border-box'
+    }}
+  />
+  {/* 👁 Eye Toggle Button */}
+  <button
+    type="button"
+    onClick={() => setShowPassword(!showPassword)}
+    style={{
+      position: 'absolute',
+      right: '12px',
+      top: '38px',
+      background: 'transparent',
+      border: 'none',
+      cursor: 'pointer',
+      color: '#6b7280',
+      fontSize: '18px',
+      padding: '4px'
+    }}>
+    {showPassword ? '🙈' : '👁️'}
+  </button>
+</div>
 
           <button
             type="submit"
