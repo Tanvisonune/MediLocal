@@ -166,7 +166,7 @@ const LoginPage = () => {
           }}
         >
           <GoogleIcon />
-          {googleLoading ? 'Signing in with Google...' : 'Continue with Google'}
+          {googleLoading ? 'Signing in with Google...' : 'Continue with Google(Comming Soon)'}
         </button>
  
         {/* Divider */}
